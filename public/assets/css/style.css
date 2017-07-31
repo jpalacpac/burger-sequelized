@@ -1,0 +1,25 @@
+.container {
+	margin-top: 20px;
+	border-radius: 10px;
+	background-color: orange;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.create-update-form {	
+  border-radius: 10px;
+  padding: 5px;
+  margin: 20px;
+  background: yellow;
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
+
+.box {
+  border-radius: 5px;
+  background: white;
+}

@@ -1,0 +1,75 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+      <h1 class="text-center">Eat-Da-Burger!</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-5">
+      <h2> Made Burgers!</h2>
+      {{#each burgers}}
+        {{#unless this.devoured}}
+        
+              <div class="list-group">
+                <h4 class="list-group-item">
+                  {{this.id}}
+                  {{this.burger_name}}
+                </h4>
+                <form class="form-inline" action="/{{this.id}}?_method=PUT" method="POST">
+                  <input type="hidden" name="devoured" value="true">
+                  <button type="submit" class="btn btn-primary">Devour it!</button>
+                </form>
+              </div>
+
+        {{/unless}}
+      {{/each}}
+    </div>
+
+    <div class="col-lg-5 col-lg-offset-2">
+    <h2>Eaten Burgers!</h2>
+      {{#each burgers}}
+        {{#if this.devoured}}
+        
+            <div class="list-group">
+              <h4 class="list-group-item">
+                {{this.id}}
+                {{this.burger_name}}
+              </h4>
+              <form action="/{{this.id}}?_method=PUT" method="POST">
+                <input type="hidden" name="devoured" value="false">
+              </form>
+              
+              <form action="/{{this.id}}?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-danger">DELETE!</button>
+              </form>
+            </div>
+        {{/if}}
+      {{/each}}
+    </div>
+  </div>  
+
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+      <form class="create-update-form" action="/" method="POST">
+
+        <div class="form-group">
+          <label for="ca">Burger Name:</label>
+          <input type="text" id="ca" name="burger_name">
+        </div>
+
+        <button type="submit" onClick="return empty()" class="btn btn-md btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function empty() {
+      var val = document.getElementById("ca").value;
+      if (val == "") {
+        return false;
+      };
+    }
+  </script>
+</div>
